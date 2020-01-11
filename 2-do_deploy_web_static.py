@@ -11,7 +11,7 @@ def do_deploy(archive_path):
     """Function that deploy using fabric
     """
     try:
-        if os.path.exists(archive_path):
+        if not os.path.exists(archive_path):
             return False
         file = archive_path.split("/")[1]
         directory = file.split(".")[0]
