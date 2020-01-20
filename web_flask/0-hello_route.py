@@ -13,4 +13,3 @@ def index():
     Function that display Hello HBNB!
     """
     return 'Hello HBNB!'
-
