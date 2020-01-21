@@ -31,7 +31,7 @@ class FileStorage:
         objs = self.__objects
         if cls:
             for key, value in objs.items():
-                if type(value).__name__ == cls.__class__.__name__:
+                if type(value).__name__ == cls.__name__:
                     my_dict[key] = value
             return my_dict
         else:
@@ -58,7 +58,7 @@ class FileStorage:
 
     def reload(self):
         """
-        serialize the file path to JSON file path
+        deserialize the file path to JSON file path
         """
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
@@ -76,3 +76,9 @@ class FileStorage:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
             self.save()
+
+    def close(self):
+        """
+        Close method
+        """
+        self.reload()

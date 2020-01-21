@@ -21,6 +21,15 @@ class DBStorage():
     __engine = None
     __session = None
 
+    objs = {
+        'State': State,
+        'Amenity': Amenity,
+        'City': City,
+        'Place': Place,
+        'Review': Review,
+        'User': User
+    }
+
     def __init__(self):
         """
         Constructor of DBstorage
@@ -44,7 +53,7 @@ class DBStorage():
         """
         if cls:
             my_dict = {}
-            query = self.__session.query(cls)
+            query = self.__session.query(DBStorage.objs[cls])
             for obj in query:
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 my_dict[key] = obj
@@ -89,3 +98,9 @@ class DBStorage():
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session()
+
+    def close(self):
+        """
+        Close method
+        """
+        self.__session.close()
