@@ -15,7 +15,7 @@
         </UL>
       {% else %}
         {% for item in seq %}{% if item[1] == stid %}
-            <H1>States: {{ item[0] }}</H1>
+            <H1>State: {{ item[0] }}</H1>
             <H3>Cities:</H3>
               <UL>
                 {% for city in cities %}{% if item[1] == city[1][1] %}
