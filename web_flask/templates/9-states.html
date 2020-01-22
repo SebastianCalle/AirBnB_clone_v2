@@ -17,11 +17,11 @@
         {% for item in seq %}{% if item[1] == stid %}
             <H1>State: {{ item[0] }}</H1>
             <H3>Cities:</H3>
-              <UL>
-                {% for city in cities %}{% if item[1] == city[1][1] %}
-                  <LI>{{ city[1][0] }}: <B>{{ city[0] }}</B></LI>
-                 {% endif %}{% endfor %}
-              </UL>
+            <UL>
+              {% for city in cities %}{% if item[1] == city[1][1] %}
+                <LI>{{ city[1][0] }}: <B>{{ city[0] }}</B></LI>
+               {% endif %}{% endfor %}
+            </UL>
           {% endif %}{% endfor %}
       {% endif %}
     </BODY>
