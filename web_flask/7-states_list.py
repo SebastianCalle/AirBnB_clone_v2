@@ -22,6 +22,7 @@ def state_list():
     state_list1 = sorted(state_dict.items())
     return render_template('7-states_list.html', seq=state_list1)
 
+
 @app.teardown_appcontext
 def session_remove(exception=None):
     """
