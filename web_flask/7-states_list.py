@@ -14,10 +14,20 @@ def state_list():
     """
     seq = storage.all("State")
     state_list = []
+    state_list1 = {}
     state_dict = {}
     for k, v in seq.items():
-        state_list.append(v)
-    return render_template('7-states_list.html', seq=state_list)
+        key = ((v.__dict__['name']), v.__dict__['id'])
+        state_dict[key[0]] = key[1]
+    state_list1 = sorted(state_dict.items())
+    return render_template('7-states_list.html', seq=state_list1)
+
+@app.teardown_appcontext
+def session_remove(exception=None):
+    """
+    Method that remove the session storage
+    """
+    storage.close()
 
 
 if __name__ == '__main__':
