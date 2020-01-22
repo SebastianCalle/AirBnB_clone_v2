@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/6-filters.css">
+    <link rel="icon" href="images/icon.png" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+  <div class="locations">
+    <h3>States</h3>
+    <h4>&nbsp</h4>
+    <div class="popover">
+        <UL>
+          {% for item in states %}
+            <H2>{{ item[0] }}</H2>
+              <UL>
+                {% for city in cities %}{% if item[1] == city[1][1] %}
+                    <LI>{{ city[0] }}</LI>
+                   {% endif %}{% endfor %}
+              </UL>
+          {% endfor %}
+        </UL>
+    </div>
+  </div>
+  <div class="amenities">
+    <h3>Amenities</h3>
+    <h4>&nbsp</h4>
+    <div class="popover">
+      <UL>
+        {% for item in amenities %}
+          <UL>
+            <LI>
+              {{ item[0] }}
+            </LI>
+          </UL>
+        {% endfor %}
+      </UL>
+    </div>
+  </div>
+  <button type="button">Search</button>
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
